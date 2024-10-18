@@ -1,15 +1,27 @@
-<input [(ngModel)]="searchTerm" name="search" placeholder="Cerca" />
+<div class="container">
+  <div class="text-center mb-3">
+    <h1>ToDo APP</h1>
+    <input
+      class="form-control w-50 mx-auto border-2"
+      [(ngModel)]="searchTerm"
+      name="search"
+      placeholder="Cerca"
+    />
+  </div>
 
-<div
-  *ngFor="let todo of getFilteredTodos()"
-  class="todo-item"
-  [class.completed]="todo.completed"
->
-  <input
-    type="checkbox"
-    [checked]="todo.completed"
-    (change)="updateTodoStatus(todo.id, $event)"
-  />
-  <span>{{ todo.todo }}</span> -
-  <span>{{ getAuthorName(todo.userId) }}</span>
+  <div
+    *ngFor="let todo of getFilteredTodos()"
+    class="todo-item mb-3 p-2 border rounded"
+    [class.completed]="todo.completed"
+  >
+    <input
+      type="checkbox"
+      [checked]="todo.completed"
+      (change)="updateTodoStatus(todo.id, $event)"
+      class="m-2"
+    />
+
+    <span class="m-3">{{ todo.todo }}</span> -
+    <span class="m-3 fw-bold">{{ getAuthorName(todo.userId) }}</span>
+  </div>
 </div>

@@ -1,0 +1,29 @@
+.users-todos {
+  padding: 20px;
+}
+
+.user-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.user-card {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item {
+  margin: 10px 0;
+}
+
+.completed {
+  color: green;
+}
+
+span:not(.completed) {
+  color: red;
+}

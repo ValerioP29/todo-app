@@ -1,7 +1,10 @@
 <div class="completed-todos">
-  <h2>Completed Todos</h2>
-  <div *ngFor="let todo of completedTodos" class="todo-item">
-    <input type="checkbox" [checked]="true" disabled />
-    <span>{{ todo.todo }}</span> - <span>{{ getAuthorName(todo.userId) }}</span>
-  </div>
+  <h2 class="text-center">Completed Todos</h2>
+  <ul class="todo-list">
+    <li *ngFor="let todo of completedTodos" class="todo-item">
+      <input type="checkbox" [checked]="true" disabled />
+      <span>{{ todo.todo }}</span> -
+      <span>{{ getAuthorName(todo.userId) }}</span>
+    </li>
+  </ul>
 </div>

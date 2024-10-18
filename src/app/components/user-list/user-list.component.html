@@ -1,14 +1,16 @@
 <div class="users-todos">
-  <h2>Users and Their Todos</h2>
-  <div *ngFor="let user of users" class="user-todos">
-    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
-    <ul>
-      <li *ngFor="let todo of getTodosByUser(user.id)">
-        {{ todo.todo }} -
-        <span [class.completed]="todo.completed">{{
-          todo.completed ? "Completed" : "Pending"
-        }}</span>
-      </li>
-    </ul>
+  <h2 class="text-center">Users and Their Todos</h2>
+  <div class="user-cards justify-content-center">
+    <div *ngFor="let user of users" class="user-card">
+      <h3 class="text-center">{{ user.firstName }} {{ user.lastName }}</h3>
+      <ul>
+        <li *ngFor="let todo of getTodosByUser(user.id)" class="todo-item">
+          {{ todo.todo }} -
+          <span [class.completed]="todo.completed">
+            {{ todo.completed ? "Completed" : "Pending" }}
+          </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
