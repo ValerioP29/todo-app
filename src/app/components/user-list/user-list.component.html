@@ -1,16 +1,43 @@
 <div class="users-todos">
-  <h2 class="text-center">Users and Their Todos</h2>
-  <div class="user-cards justify-content-center">
-    <div *ngFor="let user of users" class="user-card">
-      <h3 class="text-center">{{ user.firstName }} {{ user.lastName }}</h3>
-      <ul>
-        <li *ngFor="let todo of getTodosByUser(user.id)" class="todo-item">
-          {{ todo.todo }} -
-          <span [class.completed]="todo.completed">
-            {{ todo.completed ? "Completed" : "Pending" }}
-          </span>
-        </li>
-      </ul>
+  <h2 class="text-center mb-4">Users and Their Todos</h2>
+  <div class="user-cards d-flex flex-wrap justify-content-center">
+    <div
+      *ngFor="let user of users"
+      class="user-card card m-3"
+      style="width: 18rem"
+    >
+      <div class="card-body">
+        <h3 class="card-title text-center">
+          {{ user.firstName }} {{ user.lastName }}
+        </h3>
+        <ul class="list-group list-group-flush">
+          <ng-container
+            *ngIf="getTodosByUser(user.id).length > 0; else noTodos"
+          >
+            <li
+              *ngFor="let todo of getTodosByUser(user.id)"
+              class="list-group-item d-flex justify-content-between align-items-center"
+            >
+              <span>{{ todo.todo }}</span>
+              <span
+                [class.completed]="todo.completed"
+                class="badge"
+                [ngClass]="{
+                  'bg-success': todo.completed,
+                  'bg-warning': !todo.completed
+                }"
+              >
+                {{ todo.completed ? "Completed" : "Pending" }}
+              </span>
+            </li>
+          </ng-container>
+          <ng-template #noTodos>
+            <li class="list-group-item text-center">
+              You have completed all tasks!
+            </li>
+          </ng-template>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
