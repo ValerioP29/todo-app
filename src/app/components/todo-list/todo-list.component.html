@@ -1,0 +1,15 @@
+<input [(ngModel)]="searchTerm" placeholder="Cerca" />
+
+<div
+  *ngFor="let todo of getFilteredTodos()"
+  class="todo-item"
+  [class.completed]="todo.completed"
+>
+  <input
+    type="checkbox"
+    [checked]="todo.completed"
+    (change)="updateTodoStatus(todo.id, $event)"
+  />
+  <span>{{ todo.todo }}</span> -
+  <span>{{ getAuthorName(todo.userId) }}</span>
+</div>
