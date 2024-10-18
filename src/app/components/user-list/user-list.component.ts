@@ -11,18 +11,22 @@ import { ITodo } from '../../interfaces/i-todo';
 })
 export class UserListComponent implements OnInit {
 users: IUser[] = [];
+todos: ITodo[] = [];
 
-constructor(
-  private userService: UserService,
-  private todoService: TodoService
-){}
+constructor(private userService: UserService, private todoService: TodoService) {}
 
 ngOnInit(): void {
- this.users = this.userService.getUsers();
+  this.getUsersWithTodos();
 }
 
-getUserTodos(userId: number): ITodo[] {
-  return this.todoService.getTodos().filter(todo => todo.userId===userId)
+getUsersWithTodos(): void {
 
+  this.users = this.userService.getUsers();
+  this.todos = this.todoService.getTodos();
+}
+
+getTodosByUser(userId: number): ITodo[] {
+
+  return this.todos.filter(todo => todo.userId === userId);
 }
 }
